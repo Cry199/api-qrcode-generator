@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code</title>
+    
+    <!-- Importação do Tailwind CSS para um design moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link para o nosso arquivo de estilos customizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-full font-sans">
+    <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full text-center">
+        
+        <!-- Cabeçalho -->
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Gerador de QR Code</h1>
+        <p class="text-gray-500 mb-6">Digite qualquer texto ou URL abaixo para criar seu QR Code instantaneamente.</p>
+
+        <!-- Formulário de Entrada -->
+        <div class="space-y-4">
+            <input 
+                type="text" 
+                id="dataInput" 
+                placeholder="Ex: https://www.Teste.com"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
+            >
+            <button 
+                id="generateBtn"
+                class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-transform transform hover:scale-105"
+            >
+                Gerar QR Code
+            </button>
+        </div>
+
+        <!-- Área de Resultado e Erro -->
+        <div id="resultArea" class="mt-8 min-h-[256px] flex items-center justify-center">
+             <!-- A imagem do QR Code aparecerá aqui -->
+            <img id="qrCodeResult" class="max-w-full h-auto rounded-lg shadow-md" width="256" height="256">
+        </div>
+        <p id="errorMessage" class="text-red-500 mt-4 h-5"></p>
+
+    </div>
+
+    <!-- Link para o nosso arquivo de script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
