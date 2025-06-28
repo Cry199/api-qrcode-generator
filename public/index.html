@@ -11,7 +11,7 @@
     <!-- Link para o nosso arquivo de estilos customizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-full font-sans">
+<body class="bg-gray-100 flex items-center justify-center h-full font-sans py-10">
     <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full text-center">
         
         <!-- Cabeçalho -->
@@ -23,7 +23,7 @@
             <input 
                 type="text" 
                 id="dataInput" 
-                placeholder="Ex: https://www.Teste.com"
+                placeholder="Ex: https://www.google.com"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
             >
             <button 
@@ -34,9 +34,32 @@
             </button>
         </div>
 
+        <!-- Opções de Personalização (Colapsável) -->
+        <details class="mt-6 text-left">
+            <summary class="cursor-pointer text-sm font-medium text-gray-600 hover:text-gray-900 list-none">
+                <div class="inline-flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span>Opções de Personalização</span>
+                </div>
+            </summary>
+            <div class="mt-4 p-4 border rounded-lg space-y-4 bg-gray-50">
+                <div class="flex items-center justify-between">
+                    <label for="widthInput" class="text-gray-700 text-sm">Tamanho (pixels):</label>
+                    <input type="number" id="widthInput" value="256" class="w-24 px-2 py-1 border rounded-md text-center">
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="darkColorInput" class="text-gray-700 text-sm">Cor do QR Code:</label>
+                    <input type="color" id="darkColorInput" value="#000000" class="w-10 h-8 p-1 border rounded-md cursor-pointer">
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="lightColorInput" class="text-gray-700 text-sm">Cor do Fundo:</label>
+                    <input type="color" id="lightColorInput" value="#ffffff" class="w-10 h-8 p-1 border rounded-md cursor-pointer">
+                </div>
+            </div>
+        </details>
+
         <!-- Área de Resultado e Erro -->
-        <div id="resultArea" class="mt-8 min-h-[256px] flex items-center justify-center">
-             <!-- A imagem do QR Code aparecerá aqui -->
+        <div id="resultArea" class="mt-6 min-h-[256px] flex items-center justify-center">
             <img id="qrCodeResult" class="max-w-full h-auto rounded-lg shadow-md" width="256" height="256">
         </div>
         <p id="errorMessage" class="text-red-500 mt-4 h-5"></p>
