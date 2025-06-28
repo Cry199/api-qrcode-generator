@@ -7,15 +7,14 @@ const qrCodeService = require('../services/qrCode.service');
  * @param {Object} res - Resposta Express.
  */
 const generateQrCode = async (req, res) => {
+    // Extrai 'data' e 'options' do corpo da requisição
     const { data, options } = req.body;
 
-    if (!data) {
-        return res.status(400).json({ error: 'O campo "data" é obrigatório no corpo da requisição.' });
-    }
-
     try {
+        // Chama o serviço para gerar o QR code, passando os dados e as opções
         const qrCodeUrl = await qrCodeService.createQrCode(data, options);
         
+        // Retorna o QR code como uma URL de dados em uma resposta JSON bem-sucedida (status 200)
         res.status(200).json({
             message: 'QR Code gerado com sucesso!',
             qrCodeUrl: qrCodeUrl
@@ -27,7 +26,7 @@ const generateQrCode = async (req, res) => {
     }
 };
 
-// Exporta a função do controller para rotas
+// Exporta a função do controller para ser usada nas rotas
 module.exports = {
     generateQrCode,
 };
