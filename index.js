@@ -11,7 +11,7 @@ const rateLimit = require('express-rate-limit');
 // Configura o middleware de limite de requisições
 const apiLimiter = rateLimit({
 	windowMs: 15 * 60 * 1000,
-	max: 5, 
+	max: 100, 
 	standardHeaders: true, 
 	legacyHeaders: false, 
     message: { error: 'Muitos pedidos enviados a partir deste IP, por favor tente novamente após 15 minutos.' }
