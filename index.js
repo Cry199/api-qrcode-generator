@@ -5,6 +5,18 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./src/swagger');
 
+// --- Importações para o Rate Limiter ---
+const rateLimit = require('express-rate-limit');
+
+// Configura o middleware de limite de requisições
+const apiLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000,
+	max: 5, 
+	standardHeaders: true, 
+	legacyHeaders: false, 
+    message: { error: 'Muitos pedidos enviados a partir deste IP, por favor tente novamente após 15 minutos.' }
+});
+
 async function startServer() {
     try {
         console.log("[Inicialização 1/4] Carregando configuração...");
@@ -18,6 +30,9 @@ async function startServer() {
         app.use(cors());
         app.use(express.json());
         app.use(express.static('public'));
+
+        // Aplica o middleware de limite de requisições a todas as rotas da API
+        app.use('/api', apiLimiter);
 
         // --- Configuração da Rota do Swagger UI ---
         // A documentação interativa ficará disponível em /api-docs
